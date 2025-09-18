@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agencia de Viajes Autónoma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans text-gray-900">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">Agencia Autónoma</h1>
+      <nav class="space-x-6 text-lg">
+        <a href="#resenas" class="hover:text-blue-600 transition">Reseñas</a>
+        <a href="#contacto" class="hover:text-blue-600 transition">Contacta con nosotros</a>
+        <a href="#comprar" class="hover:text-blue-600 transition">Comprar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?travel,landscape');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center text-white max-w-2xl">
+      <h2 class="text-5xl font-bold mb-4">Descubre el mundo con nosotros</h2>
+      <p class="text-lg mb-6">Viajes únicos, experiencias inolvidables y un servicio de confianza.</p>
+      <a href="#comprar" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-lg font-semibold shadow-md transition">Empieza tu viaje</a>
+    </div>
+  </section>
+
+  <!-- Reseñas -->
+  <section id="resenas" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-10">Reseñas de Nuestros Clientes</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <p>"Una experiencia increíble, todo muy bien organizado."</p>
+          <span class="block mt-4 font-semibold">– María G.</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <p>"El mejor viaje de mi vida, repetiré sin duda."</p>
+          <span class="block mt-4 font-semibold">– Juan P.</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <p>"Confianza y profesionalidad, lo recomiendo 100%."</p>
+          <span class="block mt-4 font-semibold">– Laura R.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-10">Contacta con nosotros</h3>
+      <form class="max-w-2xl mx-auto space-y-6">
+        <input type="text" placeholder="Nombre" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        <input type="email" placeholder="Correo electrónico" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        <textarea placeholder="Tu mensaje" rows="5" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Comprar -->
+  <section id="comprar" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Reserva tu próximo viaje</h3>
+      <p class="mb-8">Próximamente podrás comprar directamente desde nuestra web.</p>
+      <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-lg font-semibold text-white shadow-md transition">Avísame cuando esté disponible</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p>© 2025 Agencia Autónoma. Todos los derechos reservados.</p>
+      <div class="space-x-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white">Facebook</a>
+        <a href="#" class="hover:text-white">Instagram</a>
+        <a href="#" class="hover:text-white">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
