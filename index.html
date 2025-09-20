@@ -11,15 +11,20 @@
   <!-- Navbar -->
   <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-md z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="Logo.png" alt="Logo Ohana" class="h-10 w-10 object-contain">
+
+      <!-- Logo a la izquierda -->
+      <img src="Logo.png" alt="Logo Ohana" class="h-12 w-12 object-contain">
+
+      <!-- Título y menú -->
+      <div class="flex items-center space-x-8">
         <h1 class="text-2xl font-bold tracking-wide">Ohana sea experiences</h1>
+        <nav class="space-x-6 text-lg">
+          <a href="#resenas" class="hover:text-blue-600 transition">Reseñas</a>
+          <a href="#contacto" class="hover:text-blue-600 transition">Contacta con nosotros</a>
+          <a href="#comprar" class="hover:text-blue-600 transition">Comprar</a>
+        </nav>
       </div>
-      <nav class="space-x-6 text-lg">
-        <a href="#resenas" class="hover:text-blue-600 transition">Reseñas</a>
-        <a href="#contacto" class="hover:text-blue-600 transition">Contacta con nosotros</a>
-        <a href="#comprar" class="hover:text-blue-600 transition">Comprar</a>
-      </nav>
+
     </div>
   </header>
 
@@ -54,21 +59,54 @@
     </div>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-10">Contacta con nosotros</h3>
-      <form id="contact-form" action="https://formspree.io/f/meolypnd" method="POST" class="max-w-2xl mx-auto space-y-6">
-        <input type="text" name="nombre" placeholder="Nombre" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-        <input type="email" name="email" placeholder="Correo electrónico" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-        <textarea name="mensaje" placeholder="Tu mensaje" rows="5" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar</button>
-      </form>
+<!-- Contacto -->
+<section id="contacto" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-10">Contacta con nosotros</h3>
+    
+    <!-- Formulario -->
+    <form id="contactForm" action="https://formspree.io/f/meolypnd" method="POST" class="max-w-2xl mx-auto space-y-6">
+      <input type="text" name="nombre" placeholder="Nombre" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input type="email" name="email" placeholder="Correo electrónico" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <textarea name="mensaje" placeholder="Tu mensaje" rows="5" required class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar</button>
+    </form>
 
-      <!-- Mensaje de respuesta -->
-      <p id="form-status" class="text-center mt-4 font-semibold"></p>
-    </div>
-  </section>
+    <!-- Mensaje de éxito o error -->
+    <p id="formStatus" class="text-center mt-6 font-semibold"></p>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const statusMsg = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // evita que se recargue la página
+
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        statusMsg.textContent = "✅ Tu mensaje ha sido enviado correctamente.";
+        statusMsg.className = "text-green-600 text-center mt-6 font-semibold";
+        form.reset();
+      } else {
+        statusMsg.textContent = "❌ Ocurrió un error. Inténtalo de nuevo.";
+        statusMsg.className = "text-red-600 text-center mt-6 font-semibold";
+      }
+    } catch (error) {
+      statusMsg.textContent = "❌ Error de conexión. Inténtalo más tarde.";
+      statusMsg.className = "text-red-600 text-center mt-6 font-semibold";
+    }
+  });
+</script>
+
 
   <!-- Comprar -->
   <section id="comprar" class="py-20 bg-gray-50">
@@ -90,37 +128,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Script para manejar envío del formulario -->
-  <script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          status.textContent = "✅ ¡Gracias! Tu mensaje ha sido enviado.";
-          status.className = "text-green-600 text-center mt-4 font-semibold";
-          form.reset();
-        } else {
-          status.textContent = "❌ Ocurrió un error. Intenta de nuevo.";
-          status.className = "text-red-600 text-center mt-4 font-semibold";
-        }
-      } catch (error) {
-        status.textContent = "❌ Error de conexión. Intenta más tarde.";
-        status.className = "text-red-600 text-center mt-4 font-semibold";
-      }
-    });
-  </script>
 
 </body>
 </html>
